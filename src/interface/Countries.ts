@@ -1,3 +1,9 @@
+export interface BorderingCountry {
+  flags: Flags;
+  population: number;
+  name: Name;
+}
+
 export interface Country {
   name: Name;
   tld: string[];
@@ -62,10 +68,10 @@ export interface Tuk {
 }
 
 export interface Currencies {
-  AFN: Afn;
+  [key: string]: Currency;
 }
 
-export interface Afn {
+export interface Currency {
   name: string;
   symbol: string;
 }
@@ -76,9 +82,7 @@ export interface Idd {
 }
 
 export interface Languages {
-  prs: string;
-  pus: string;
-  tuk: string;
+  [key: string]: string;
 }
 
 export interface Translations {

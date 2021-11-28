@@ -1,11 +1,13 @@
 import { InferGetStaticPropsType, GetStaticProps } from "next";
 import { useRouter } from "next/dist/client/router";
-import { Country } from "@/interface/Countries";
+import { Country, BorderingCountry } from "@/interface/Countries";
 import { CountryDetails } from "@/components/molecules/CountryDetails/CountryDetails";
+import { Centered } from "@/components/atoms/Layout.styled";
 
 export const getStaticProps: GetStaticProps<
   {
     country: Country[];
+    borderingCountry: BorderingCountry[] | [];
   },
   { id: string }
 > = async (context) => {
@@ -15,9 +17,30 @@ export const getStaticProps: GetStaticProps<
 
   const country: Country[] = await res.json();
 
+  let borderingCountry: BorderingCountry[] | [] = [];
+
+  if (country && country[0].borders && country[0].borders.length > 0) {
+    const borderCountryCode = country[0].borders.join(",");
+
+    if (borderCountryCode) {
+      const borderCountryRes = await fetch(
+        `https://restcountries.com/v3.1/alpha?codes=${borderCountryCode}`
+      );
+      const countryBorderData: Country[] = await borderCountryRes.json();
+
+      borderingCountry =
+        countryBorderData?.map((country) => ({
+          name: country.name,
+          flags: country.flags,
+          population: country.population,
+        })) || [];
+    }
+  }
+
   return {
     props: {
       country,
+      borderingCountry,
     },
   };
 };
@@ -41,6 +64,7 @@ export const getStaticPaths = async () => {
 
 const CountriesDetails = ({
   country,
+  borderingCountry,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
 
@@ -49,7 +73,14 @@ const CountriesDetails = ({
   const selectedCountry = country[0];
 
   if (country && id) {
-    return <CountryDetails country={selectedCountry} />;
+    return (
+      <Centered>
+        <CountryDetails
+          country={selectedCountry}
+          borderingCountry={borderingCountry}
+        />
+      </Centered>
+    );
   }
 
   return null;

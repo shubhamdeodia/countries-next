@@ -20,7 +20,6 @@ export const CardItem = styled.div`
   width: 100%;
   flex-direction: column;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: ${({ theme }) => theme.borderRadius};
   border: 1px solid rgba(32, 33, 37, 0.08);

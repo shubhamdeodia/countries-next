@@ -20,6 +20,7 @@ const Centered = styled.div`
 
 export const Main = styled.main`
   display: flex;
+  height: 100%;
   max-width: 960px;
   margin: 0 auto;
   flex-direction: column;
@@ -39,11 +40,12 @@ export const GridContainer = styled.div`
   }
 `;
 
-const VStack = styled.div<SpaceProps>`
+const VStack = styled.div<SpaceProps & FlexboxProps>`
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
+  ${flexbox}
 `;
 
 const HStack = styled.div<{ gap?: string }>`
