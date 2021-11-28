@@ -9,12 +9,6 @@ const Home = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <Head>
-        <title>Web Dev News</title>
-        <meta name="keywords" content="web dev, programming" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <section>
         <Centered>
           <CountriesList countries={countries} />

@@ -1,5 +1,5 @@
 {
-  "name": "distilled-test",
+  "name": "countries-nextjs",
   "private": true,
   "scripts": {
     "dev": "next dev",

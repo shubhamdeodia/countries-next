@@ -3,6 +3,7 @@ import { useRouter } from "next/dist/client/router";
 import { Country, BorderingCountry } from "@/interface/Countries";
 import { CountryDetails } from "@/components/molecules/CountryDetails/CountryDetails";
 import { Centered } from "@/components/atoms/Layout.styled";
+import { Meta } from "@/components/molecules/Meta/Meta";
 
 export const getStaticProps: GetStaticProps<
   {
@@ -73,14 +74,20 @@ const CountriesDetails = ({
 
   const selectedCountry = country[0];
 
-  if (country && id) {
+  if (selectedCountry && id) {
     return (
-      <Centered>
-        <CountryDetails
-          country={selectedCountry}
-          borderingCountry={borderingCountry}
+      <>
+        <Meta
+          title={selectedCountry.name.common}
+          keywords={selectedCountry.capital.join(", ")}
         />
-      </Centered>
+        <Centered>
+          <CountryDetails
+            country={selectedCountry}
+            borderingCountry={borderingCountry}
+          />
+        </Centered>
+      </>
     );
   }
 

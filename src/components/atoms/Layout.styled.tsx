@@ -15,12 +15,13 @@ const Centered = styled.div`
   justify-content: center;
   align-items: center;
 `;
-
 export const Main = styled.main`
   display: flex;
   height: 100%;
   max-width: 960px;
-  margin: 0 auto;
+  position: relative;
+  padding-top: 100px;
+  margin: 0px auto;
   flex-direction: column;
 `;
 

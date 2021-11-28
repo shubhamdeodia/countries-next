@@ -48,9 +48,10 @@ export interface Name {
 }
 
 export interface NativeName {
-  prs: Prs;
-  pus: Pus;
-  tuk: Tuk;
+  [key: string]: {
+    official: string;
+    common: string;
+  };
 }
 
 export interface Prs {
