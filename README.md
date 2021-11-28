@@ -2,6 +2,8 @@ Hi!!
 
 Before we begin, I just want to tell you that I created this app with no prior knowledge of next.js. I purchased a course from FrontendMasters and worked my way from there.
 
+[Sandbox](https://codesandbox.io/s/gallant-microservice-xokpi?file=/README.md) 
+
 ## Getting Started
 
 First, run the development server:
