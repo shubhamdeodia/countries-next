@@ -1,5 +1,5 @@
 import { Typography } from "@/components/atoms/Typography";
-import { Country } from "@/interface/Countries";
+import { IntialCountryData } from "@/interface/Countries";
 import Image from "next/image";
 import { Card } from "@/components/molecules/Card/Card";
 import Link from "next/link";
@@ -7,7 +7,7 @@ import { GridContainer } from "@/components/atoms/Layout.styled";
 import { ImageContainer } from "./CountriesList.styled";
 
 interface CountriesListProps {
-  countries: Country[];
+  countries: IntialCountryData[];
 }
 
 const CountriesList = ({ countries }: CountriesListProps) => {

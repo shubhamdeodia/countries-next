@@ -5,6 +5,14 @@ export interface BorderingCountry {
   cca3: string;
 }
 
+export interface IntialCountryData {
+  name: Name;
+  cca3: string;
+  capital: string;
+  population: number;
+  flags: Flags;
+}
+
 export interface Country {
   name: Name;
   tld: string[];
