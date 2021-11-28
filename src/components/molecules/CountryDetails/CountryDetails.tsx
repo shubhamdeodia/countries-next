@@ -48,7 +48,10 @@ const CountryDetails = ({ country, borderingCountry }: Props) => {
           {country.name.common}
         </Typography>
         <Typography my={10} variant="body" as="p">
-          Capital: {country.capital}
+          Capital:{" "}
+          {country.capital && country.capital.length > 0
+            ? country.capital.join(", ")
+            : ""}
         </Typography>
         <Typography my={10} variant="body" as="p">
           Population: {country.population}

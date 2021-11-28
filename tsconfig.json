@@ -21,6 +21,12 @@
       "@/pages/*": ["pages/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "@types"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "@types",
+    "setupTests.ts"
+  ],
   "exclude": ["node_modules"]
 }

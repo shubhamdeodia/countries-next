@@ -35,7 +35,7 @@ const CountriesList = ({ countries }: CountriesListProps) => {
                     {country.name.common}
                   </Typography>
                   <Typography variant="caption" as="p">
-                    Capital : {country.name.common}
+                    Capital : {country.capital}
                   </Typography>
                   <Typography variant="caption" as="p">
                     Population: {country.population}
