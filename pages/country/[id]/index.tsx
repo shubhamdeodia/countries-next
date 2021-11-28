@@ -33,6 +33,7 @@ export const getStaticProps: GetStaticProps<
           name: country.name,
           flags: country.flags,
           population: country.population,
+          cca3: country.cca3,
         })) || [];
     }
   }

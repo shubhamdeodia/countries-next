@@ -2,6 +2,7 @@ export interface BorderingCountry {
   flags: Flags;
   population: number;
   name: Name;
+  cca3: string;
 }
 
 export interface Country {

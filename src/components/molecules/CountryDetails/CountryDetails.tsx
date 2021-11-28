@@ -8,10 +8,12 @@ import {
   CountryDetailsFooterItem,
 } from "./CountryDetails.styled";
 import Image from "next/image";
+import Link from "next/link";
 
 import { Typography } from "@/components/atoms/Typography";
 
 import { VStack } from "@/components/atoms/Layout.styled";
+import Button from "@/components/atoms/Button.styled";
 interface Props {
   country: Country;
   borderingCountry: BorderingCountry[] | [];
@@ -20,6 +22,17 @@ interface Props {
 export const CountryDetails = ({ country, borderingCountry }: Props) => {
   return (
     <CountryDetailsContainer>
+      <VStack>
+        <Link href={`/`}>
+          <a>
+            <Button>
+              <Typography m={0} variant="caption" as="p">
+                Go Back
+              </Typography>
+            </Button>
+          </a>
+        </Link>
+      </VStack>
       <CountryDetailsImageWrapper>
         <Image
           src={country.flags.svg}
@@ -29,6 +42,7 @@ export const CountryDetails = ({ country, borderingCountry }: Props) => {
           alt={`flag of ${country.name.common}`}
         />
       </CountryDetailsImageWrapper>
+
       <CountryDetailsContentWrapper>
         <Typography my={10} variant="header" as="header">
           {country.name.common}
@@ -40,12 +54,12 @@ export const CountryDetails = ({ country, borderingCountry }: Props) => {
           Population: {country.population}
         </Typography>
         <Typography my={10} variant="body" as="p">
-          Currency:{" "}
-          {country.currencies && Object.keys(country.currencies).join(", ")}
+          {country.currencies &&
+            `Currency: ${Object.keys(country.currencies).join(", ")}`}
         </Typography>
         <Typography my={10} variant="body" as="p">
-          Laguages:{" "}
-          {country.languages && Object.values(country.languages).join(", ")}
+          {country.languages &&
+            `Laguages: ${Object.values(country.languages).join(", ")}`}
         </Typography>
       </CountryDetailsContentWrapper>
       <VStack>
@@ -53,27 +67,40 @@ export const CountryDetails = ({ country, borderingCountry }: Props) => {
           Bordering Countries
         </Typography>
         <CountryDetailsFooter>
-          {borderingCountry?.map((borderCountry) => {
-            return (
-              <CountryDetailsFooterItem key={borderCountry.name.common}>
-                <Image
-                  src={borderCountry.flags.svg}
-                  height="100%"
-                  width="100%"
-                  alt={`flag of ${borderCountry.name.common}`}
-                />
-                <VStack justifyContent="center">
-                  <Typography my="5px" variant="accent" as="p">
-                    {borderCountry.name.common}
-                  </Typography>
+          {borderingCountry && borderingCountry.length > 0 ? (
+            borderingCountry.map((borderCountry) => {
+              return (
+                <Link
+                  key={borderCountry.name.common}
+                  href={`/country/${borderCountry.cca3}`}
+                >
+                  <a>
+                    <CountryDetailsFooterItem>
+                      <Image
+                        src={borderCountry.flags.svg}
+                        height="100%"
+                        width="100%"
+                        alt={`flag of ${borderCountry.name.common}`}
+                      />
+                      <VStack justifyContent="center">
+                        <Typography my="5px" variant="accent" as="p">
+                          {borderCountry.name.common}
+                        </Typography>
 
-                  <Typography my="5px" variant="accent" as="p">
-                    Population : {borderCountry.population}
-                  </Typography>
-                </VStack>
-              </CountryDetailsFooterItem>
-            );
-          })}
+                        <Typography my="5px" variant="accent" as="p">
+                          Population : {borderCountry.population}
+                        </Typography>
+                      </VStack>
+                    </CountryDetailsFooterItem>
+                  </a>
+                </Link>
+              );
+            })
+          ) : (
+            <Typography my={10} variant="body" as="p">
+              None
+            </Typography>
+          )}
         </CountryDetailsFooter>
       </VStack>
     </CountryDetailsContainer>

@@ -27,6 +27,11 @@ export const CountryDetailsContainer = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius};
   background-color: ${({ theme }) => theme.colors.white};
   gap: 30px;
+  @media (min-width: ${({ theme }) => theme.breakpoints[0]}) {
+    justify-content: flex-start;
+  }
+
+  justify-content: center;
 `;
 
 export const CountryDetailsFooter = styled.footer`
@@ -35,6 +40,9 @@ export const CountryDetailsFooter = styled.footer`
   gap: 10px;
   justify-content: center;
   align-items: center;
+  a {
+    text-decoration: none;
+  }
 `;
 
 export const CountryDetailsItem = styled.footer`
@@ -62,14 +70,3 @@ export const CountryDetailsFooterItem = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius};
   border: 1px solid rgba(32, 33, 37, 0.08);
 `;
-
-//  /* Screen larger than 640px? 2 column */
-//  @media (min-width: ${({ theme }) => theme.breakpoints[0]}) {
-//     max-width: 300px;
-//   }
-
-//   /* Screen larger than 900px? 3 columns */
-//   @media (min-width: ${({ theme }) => theme.breakpoints[2]}) {
-//     max-width: 300px;
-//   }
-//   max-width: 200px;
