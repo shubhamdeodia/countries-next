@@ -19,7 +19,7 @@ interface Props {
   borderingCountry: BorderingCountry[] | [];
 }
 
-export const CountryDetails = ({ country, borderingCountry }: Props) => {
+const CountryDetails = ({ country, borderingCountry }: Props) => {
   return (
     <CountryDetailsContainer>
       <VStack>
@@ -106,3 +106,5 @@ export const CountryDetails = ({ country, borderingCountry }: Props) => {
     </CountryDetailsContainer>
   );
 };
+
+export default CountryDetails;

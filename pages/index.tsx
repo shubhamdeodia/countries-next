@@ -1,8 +1,9 @@
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 
 import { IntialCountryData, Country } from "@/interface/Countries";
-import CountriesList from "@/components/molecules/CountriesList/CountriesList";
 import { Centered } from "@/components/atoms/Layout.styled";
+
+import CountriesList from "@/components/molecules/CountriesList/CountriesList";
 
 export const getStaticProps: GetStaticProps<{
   countries: IntialCountryData[];
