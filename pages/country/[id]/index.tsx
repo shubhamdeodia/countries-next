@@ -79,7 +79,11 @@ const CountriesDetails = ({
       <>
         <Meta
           title={selectedCountry.name.common}
-          keywords={selectedCountry.capital.join(", ")}
+          keywords={
+            selectedCountry.capital?.length > 0
+              ? selectedCountry.capital.join(", ")
+              : ""
+          }
         />
         <Centered>
           <CountryDetails

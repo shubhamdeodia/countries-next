@@ -1,8 +1,21 @@
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
-import Head from "next/head";
+
 import { Country } from "@/interface/Countries";
 import CountriesList from "@/components/molecules/CountriesList/CountriesList";
 import { Centered } from "@/components/atoms/Layout.styled";
+
+export const getStaticProps: GetStaticProps<{ countries: Country[] }> =
+  async () => {
+    const res = await fetch("https://restcountries.com/v3.1/all");
+
+    const countries: Country[] = await res.json();
+
+    return {
+      props: {
+        countries,
+      },
+    };
+  };
 
 const Home = ({
   countries,
@@ -19,16 +32,3 @@ const Home = ({
 };
 
 export default Home;
-
-export const getStaticProps: GetStaticProps<{ countries: Country[] }> =
-  async () => {
-    const res = await fetch("https://restcountries.com/v3.1/all");
-
-    const countries: Country[] = await res.json();
-
-    return {
-      props: {
-        countries,
-      },
-    };
-  };
