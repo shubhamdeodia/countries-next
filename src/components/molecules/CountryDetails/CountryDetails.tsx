@@ -23,7 +23,7 @@ const CountryDetails = ({ country, borderingCountry }: Props) => {
   return (
     <CountryDetailsContainer>
       <VStack>
-        <Link href={`/`}>
+        <Link href={`/`} scroll={false}>
           <a>
             <Button>
               <Typography m={0} variant="caption" as="p">

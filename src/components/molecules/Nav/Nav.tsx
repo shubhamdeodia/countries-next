@@ -6,7 +6,9 @@ const Nav = () => {
     <NavStyled>
       <ul>
         <li>
-          <Link href="/">Home</Link>
+          <Link href="/" scroll={false}>
+            Home
+          </Link>
         </li>
       </ul>
     </NavStyled>
