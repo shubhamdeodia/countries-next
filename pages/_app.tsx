@@ -1,8 +1,18 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import GlobalStyle from "@/theme/GlobalStyle";
+import type { AppProps } from "next/app";
+import theme from "@/theme/theme";
+import { ThemeProvider } from "styled-components";
+import Layout from "@/components/molecules/Layout";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </ThemeProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;
